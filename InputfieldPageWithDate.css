@@ -1,0 +1,12 @@
+.InputfieldPageWithDateAddButton {
+	margin-bottom: 0 !important;
+}
+
+.InputfieldPageWithDateAddItems {
+	display: none;
+	margin-top: 0 !important;
+}
+
+.InputfieldPageWithDateAddItems input {
+	width: 99%;
+}
