@@ -174,16 +174,20 @@ class FieldtypePageWithDate extends FieldtypeMulti implements Module, Configurab
 			if(count($value)) {
 				// @raymondgeerts
 				// since page no longer contains only the data field but also assigned field
-				// $value is an array too,
+				// make sure both values are available
 				$vals = array();
-				foreach($value as $key=>$val) $vals[$key] = $val['data'];
-				$value = implode("|", $vals);
+				$assigned = array();
+				foreach($value as $key=>$val) {
+					$vals[$key] = $val['data'];
+					$id = $val['data'];
+					$assigned[$id] = $val['assigned'];
+				}
 				// get the first value in a PageArray, using $template and parent for optimization
-				// @raymondgeerts instead of getById we do a find
-				$pageArray = $this->fuel('pages')->find("id=$value, template=$template");
+				$pageArray = $this->wire('pages')->getById($vals, $template);
 				if(count($pageArray)) $pg = $pageArray->first();
 			}
-
+			// add assigned value to current pageArray item
+			if($pg) $pg->assigned = $assigned[$pg->id];
 			if($pg && $pg->status >= Page::statusUnpublished && !$field->allowUnpub) $pg = false;
 			if(!$pg) $pg = $this->getBlankValue($page, $field);
 
@@ -194,17 +198,21 @@ class FieldtypePageWithDate extends FieldtypeMulti implements Module, Configurab
 			if(!count($value)) {
 				return $this->getBlankValue($page, $field);
 
-			} else {
-				// @raymondgeerts
-				// since page no longer contains only the data field but also assigned field
-				// $value is an array too,
-				$vals = array();
-				foreach($value as $key=>$val) $vals[$key] = $val['data'];
-				$value = implode("|", $vals);
 			}
-			// @raymondgeerts instead of getById we do a find
-			$pageArray = $this->fuel('pages')->find("id=$value, template=$template");
-			foreach($pageArray as $pg) {
+			// @raymondgeerts
+			// since page no longer contains only the data field but also assigned field
+			// make sure both values are available
+			$vals = array();
+			$assigned = array();
+			foreach($value as $key=>$val) {
+				$vals[$key] = $val['data'];
+				$id = $val['data'];
+				$assigned[$id] = $val['assigned'];
+			}
+			$pageArray = $this->wire('pages')->getById($vals, $template);
+			foreach($pageArray as $key=>$pg) {
+				// add assigned value to current pageArray item
+				$pageArray[$key]->assigned = $assigned[$pg->id];
 				// remove any pages that have an unpublished status
 				if($pg->status >= Page::statusUnpublished && !$field->allowUnpub) $pageArray->remove($pg);
 			}
