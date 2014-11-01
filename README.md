@@ -1,12 +1,16 @@
-FieldtypePageWithDate
-=====================
+FieldtypePageWithDate & InputfieldPageWithDate
+==============================================
 
 Module for ProcessWire - Page Reference with Date Field - Field that stores one or more references to ProcessWire pages
 
 Modified version of the FieldtypePage module in ProcessWire with extra datetime field containing the date a page was added to the inputfield.
 
+### To install
+
+Copy to /site/modules/ and go to Admin > Modules > Check for new modules. 
+
 ### Requirement
-Requires: InputfieldPageWithDate
+Requires: InputfieldPageWithDate (will be installed automaticly)
 
 Tested on ProcessWire 2.5.6 dev
 

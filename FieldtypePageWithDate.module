@@ -27,7 +27,10 @@ class FieldtypePageWithDate extends FieldtypeMulti implements Module, Configurab
 			'title' => 'Page Reference with Date Field',
 			'version' => 102,
 			'summary' => 'Field that stores one or more references to ProcessWire pages',
-			'permanent' => true,
+			'permanent' => false,
+			'installs' => array(
+					"InputfieldPageWithDate",
+				),
 			);
 	}
 

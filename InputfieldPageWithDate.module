@@ -55,7 +55,10 @@ class InputfieldPageWithDate extends Inputfield implements ConfigurableModule {
 			'title' => 'Page with Date Field',
 			'version' => 104,
 			'summary' => 'Select one or more pages',
-			'permanent' => true,
+			'permanent' => false,
+			'requires' => array(
+					"FieldtypePageWithDate",
+				),
 			);
 	}
 
