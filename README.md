@@ -48,7 +48,7 @@ if (count($page->myfriends)) {
     foreach($page->myfriends as $friend) {
         echo "id: ".$friend->id."<br>";
         echo "name: ".$friend->name."<br>";
-        echo "assigned on: ".date("Y-m-d H:i:s", $friend->assigned)."<br><br>";
+        echo "assigned on: ".$friend->assigned."<br><br>";
     }
 }
 ```
@@ -62,13 +62,15 @@ assigned on: 2014-10-31 14:22:02 <br>
 id: 1032 <br>
 name: janedoe <br>
 assigned on: 2013-04-15 23:16:38 <br>
+<br>
+**Note: To use your own data/time formatting set $friend->of(false); to get a unix timestamp from the database**
 
 #### Single page
 
 ```php
 echo "id: ".$page->myfriends->id."<br>";
 echo "name: ".$page->myfriends->name."<br>";
-echo "assigned on: ".date("Y-m-d H:i:s", $page->myfriends->assigned)."<br>";
+echo "assigned on: ".$page->myfriends->assigned."<br>";
 ```
 
 ##### This will output something like:
@@ -76,3 +78,5 @@ echo "assigned on: ".date("Y-m-d H:i:s", $page->myfriends->assigned)."<br>";
 id: 1031 <br>
 name: johndoe <br>
 assigned on: 2014-10-31 14:22:02 <br>
+<br>
+**Note: To use your own data/time formatting set $page->myfriends->of(false); to get a unix timestamp from the database**
