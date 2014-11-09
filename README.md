@@ -63,7 +63,7 @@ id: 1032 <br>
 name: janedoe <br>
 assigned on: 2013-04-15 23:16:38 <br>
 <br>
-**Note: To use your own data/time formatting set $friend->of(false); to get a unix timestamp from the database**
+*Note: To use your own data/time formatting set $friend->of(false); to get a unix timestamp from the database*
 
 #### Single page
 
@@ -79,4 +79,4 @@ id: 1031 <br>
 name: johndoe <br>
 assigned on: 2014-10-31 14:22:02 <br>
 <br>
-**Note: To use your own data/time formatting set $page->myfriends->of(false); to get a unix timestamp from the database**
+*Note: To use your own data/time formatting set $page->myfriends->of(false); to get a unix timestamp from the database*
