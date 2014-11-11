@@ -80,3 +80,15 @@ name: johndoe <br>
 assigned on: 2014-10-31 14:22:02 <br>
 <br>
 *Note: To use your own data/time formatting set $page->myfriends->of(false); to get a unix timestamp from the database*
+
+#### Set assigned datetime manually
+
+You can set datetime manually by assigning it to the page you add
+
+```php
+$friend = $users->get('johndoe');
+$friend->assigned = "2012-01-01 12:12:12";
+$page->myfriends->add($friend);
+$page->of(false);
+$page->save();
+```
