@@ -263,6 +263,7 @@ class FieldtypePageWithDate extends FieldtypeMulti implements Module, Configurab
 				return ($ar['data'] == $value->id);
 			});
 			$arr = array_values($arr)[0];
+			if ($value->assigned) $arr['assigned'] = $value->assigned;
 			$assigned = isset($arr['assigned']) ? $arr['assigned'] : date('Y-m-d H:i:s', time());
 			$sleepValue[] = array('data'=>$value->id, 'assigned'=>$assigned);
 		} else {
@@ -278,6 +279,7 @@ class FieldtypePageWithDate extends FieldtypeMulti implements Module, Configurab
 					return ($ar['data'] == $pg->id);
 				});
 				$arr = array_values($arr)[0];
+				if ($pg->assigned) $arr['assigned'] = $pg->assigned;
 				$assigned = isset($arr['assigned']) ? $arr['assigned'] : date('Y-m-d H:i:s', time());
 				$sleepValue[] = array('data'=>$pg->id, 'assigned'=>$assigned);
 			}
